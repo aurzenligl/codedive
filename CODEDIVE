@@ -1,28 +1,36 @@
 how clang works
 ----------------------------
-> clang is a compiler, written in C++, good diagnostics
+    clang is a compiler, written in C++, good diagnostics
 g++ example.cpp
 clang++ example.cpp
-> libclang has well designed AST, intended for building tools
+    libclang has well designed AST, intended for building tools
 wget https://github.com/llvm-mirror/clang/archive/master.zip
 python clang-master/bindings/python/examples/cindex/cindex-dump.py example.cpp | less
 python clang-master/bindings/python/examples/cindex/cindex-includes.py /usr/include/stdint.h | less
 
 binding with ctypes
 ----------------------------
-4. ctypes is a python stdlib based on libffi
-5. how to open library
-6. basics: simple function, global, calls count
-7. strchr: call a function raw, argtypes, restype
-*. custom: vector example, little hourglass
+    foo library
+vim foo.hpp
+vim foo.cpp
+./cfoo.sh
+readelf -a libfoo.so
+./cmain.sh && ./a.out
+    open and close
+./foo1_open.py
+    arg types control
+./foo2_args.py
+
+*** pointers?
+*** errcheck?
+*** custom: vector example, little hourglass
 
 clang binding explained
 ----------------------------
-> hourglass C-API
+    hourglass C-API with binding
 vim clang-master/include/clang-c/Index.h
-> ctypes bound to C-API
 vim clang-master/bindings/python/clang/cindex.py
-> source itself
+    source itself
 vim clang-master/bindings/python/examples/cindex/cindex-dump.py
 vim clang-master/bindings/python/examples/cindex/cindex-includes.py
 
