@@ -4,8 +4,9 @@
 --------------------------
 4. ctypes is a python stdlib based on libffi
 5. how to open library
-6. call a function raw, argtypes, restype
-7. from_param
+6. basics: simple function, global, calls count
+7. strchr: call a function raw, argtypes, restype
+*. custom: vector example, little hourglass
 --------------------------
 *. see the cindex source code and explain
 
@@ -24,4 +25,3 @@ def from_param
 
 func.restype = item[2]
 func.errcheck = item[3]
-
