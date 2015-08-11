@@ -1,0 +1,27 @@
+1. clang is a compiler, written in C++, good diagnostics
+2. libclang has well designed AST, C-API, intended for building tools
+3. run an example bundled python clang parsing program
+--------------------------
+4. ctypes is a python stdlib based on libffi
+5. how to open library
+6. call a function raw, argtypes, restype
+7. from_param
+--------------------------
+*. see the cindex source code and explain
+
+ctypes
+https://docs.python.org/2/library/ctypes.html
+
+libffi
+https://en.wikipedia.org/wiki/Libffi
+
+foo = ctypes.cdll.LoadLibrary('libfoo.so')
+_ctypes.dlclose(foo._handle)
+
+func.argtypes = item[1]
+def _as_parameter_
+def from_param
+
+func.restype = item[2]
+func.errcheck = item[3]
+
