@@ -1,5 +1,11 @@
 #include "foo.hpp"
 
+int calls()
+{
+    static int calls = 0;
+    return calls++;
+}
+
 int X = 2;
 
 int foo(int x)
@@ -7,8 +13,7 @@ int foo(int x)
     return x * X;
 }
 
-int calls()
+void bar(int* y)
 {
-    static int calls = 0;
-    return calls++;
+    *y = 42;
 }

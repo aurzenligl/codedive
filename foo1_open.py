@@ -11,3 +11,4 @@ dlclose(foo._handle)
 foo = cdll.LoadLibrary('libfoo.so')
 print foo.calls()
 
+import ipdb; ipdb.set_trace()

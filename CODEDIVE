@@ -20,6 +20,10 @@ readelf -a libfoo.so
 ./foo1_open.py
     arg types control
 ./foo2_args.py
+    access global variable
+./foo3_glovar.py
+    pass by pointer
+./foo4_byref.py
 
 *** pointers?
 *** errcheck?

@@ -7,9 +7,10 @@
 extern "C" {
 #endif
 
+LIBLINKAGE int calls();
 LIBLINKAGE extern int X;
 LIBLINKAGE int foo(int x);
-LIBLINKAGE int calls();
+LIBLINKAGE void bar(int* y);
 
 #ifdef __cplusplus
 }
