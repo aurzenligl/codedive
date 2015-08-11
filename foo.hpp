@@ -1,18 +1,15 @@
 #ifndef FOO_X
 #define FOO_X
 
+#define LIBLINKAGE __attribute__ ((visibility ("default")))
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-__attribute__ ((visibility ("default")))
-extern int X;
-
-__attribute__ ((visibility ("default")))
-int foo(int x);
-
-__attribute__ ((visibility ("default")))
-int calls();
+LIBLINKAGE extern int X;
+LIBLINKAGE int foo(int x);
+LIBLINKAGE int calls();
 
 #ifdef __cplusplus
 }
