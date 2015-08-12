@@ -28,3 +28,8 @@
 *.app
 
 clang-master
+
+.cproject
+.project
+.pydevproject
+.settings
