@@ -24,10 +24,8 @@ readelf -a libfoo.so
 ./foo3_glovar.py
     pass by pointer
 ./foo4_byref.py
-
-*** pointers?
-*** errcheck?
-*** custom: vector example, little hourglass
+    vector class hourglassing
+./foo5_intvec.py
 
 clang binding explained
 ----------------------------
