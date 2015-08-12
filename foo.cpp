@@ -53,7 +53,22 @@ void IntVec_delete(IntVec* v)
     delete v;
 }
 
-int* IntVec_begin(IntVec* v);
-size_t IntVec_size(IntVec* v);
-void IntVec_push_back(IntVec* v, int x);
-void IntVec_resize(IntVec* v, size_t size);
+int* IntVec_begin(IntVec* v)
+{
+    return v->data();
+}
+
+size_t IntVec_size(IntVec* v)
+{
+    return v->size();
+}
+
+void IntVec_push_back(IntVec* v, int x)
+{
+    v->push_back(x);
+}
+
+void IntVec_resize(IntVec* v, size_t size)
+{
+    v->resize(size);
+}
