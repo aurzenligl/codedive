@@ -10,6 +10,8 @@ python clang-master/bindings/python/examples/cindex/cindex-includes.py /usr/incl
 
 binding with ctypes
 ----------------------------
+    ctypes uses libffi to call natively compiled functions
+https://en.wikipedia.org/wiki/Libffi
     foo library
 vim foo.hpp
 vim foo.cpp
