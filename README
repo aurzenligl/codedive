@@ -55,4 +55,3 @@ def from_param
 
 func.restype = item[2]
 func.errcheck = item[3]
- 
