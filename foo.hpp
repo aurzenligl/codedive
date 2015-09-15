@@ -2,6 +2,7 @@
 #define FOO_X
 
 #include <stddef.h>
+#include <stdbool.h>
 
 #define LIBLINKAGE __attribute__ ((visibility ("default")))
 
@@ -9,12 +10,12 @@
 extern "C" {
 #endif
 
-LIBLINKAGE int calls();
+LIBLINKAGE int calls(void);
 LIBLINKAGE extern int X;
 LIBLINKAGE int foo(int x);
 LIBLINKAGE void bar(int* y);
 
-struct IntVec;
+typedef struct IntVec IntVec;
 typedef bool (*Comp)(int a, int b);
 LIBLINKAGE IntVec* IntVec_create(size_t size);
 LIBLINKAGE void IntVec_delete(IntVec* v);
