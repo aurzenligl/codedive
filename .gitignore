@@ -33,3 +33,5 @@ clang-master
 .project
 .pydevproject
 .settings
+
+_*.c
