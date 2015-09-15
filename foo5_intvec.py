@@ -8,12 +8,15 @@ def types(fun, ret, args):
     fun.restype = ret
     fun.argtypes = args
 
+Comp = CFUNCTYPE(c_bool, c_int, c_int)
+
 types(foo.IntVec_create, c_void_p, [c_size_t])
 types(foo.IntVec_delete, None, [c_void_p])
 types(foo.IntVec_begin, POINTER(c_int), [c_void_p])
 types(foo.IntVec_size, c_size_t, [c_void_p])
 types(foo.IntVec_resize, None, [c_void_p, c_size_t])
 types(foo.IntVec_push_back, None, [c_void_p, c_int])
+types(foo.IntVec_sort, None, [c_void_p, Comp])
 
 class IntVec(object):
     def __init__(self, size):
@@ -31,8 +34,14 @@ class IntVec(object):
     def resize(self, size):
         return foo.IntVec_resize(self.v, size)
 
+    def sort(self, comp):
+        foo.IntVec_sort(self.v, Comp(comp))
+
     def _begin(self):
         return foo.IntVec_begin(self.v)
+
+    def __repr__(self):
+        return str([x for x in self])
 
     def __setitem__(self, index, value):
         self._begin()[index] = value
@@ -66,16 +75,21 @@ v = IntVec(3)
 v[0] = 42
 v[1] = 666
 v[2] = 65536
-print [x for x in v]
+print v
 print "...push_back a couple more..."
 v.push_back(7)
 v.push_back(8)
 v.push_back(9)
-print [x for x in v]
+print v
+print "...sort them..."
+v.sort(lambda x,y: x<y)
+print v
+v.sort(lambda x,y: x>y)
+print v
 print "...and resize down and up."
 v.resize(2)
-print [x for x in v]
+print v
 v.resize(20)
-print [x for x in v]
+print v
 
 import ipdb;ipdb.set_trace()

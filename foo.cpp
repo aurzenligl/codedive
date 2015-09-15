@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
 
 __attribute__((constructor))
 void dlentry(void)
@@ -113,4 +114,9 @@ void IntVec_push_back(IntVec* v, int x)
 void IntVec_resize(IntVec* v, size_t size)
 {
     v->resize(size);
+}
+
+void IntVec_sort(IntVec* v, Comp comp)
+{
+    std::sort(v->begin(), v->end(), comp);
 }
