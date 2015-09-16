@@ -38,6 +38,13 @@ vim clang-master/bindings/python/clang/cindex.py
 vim clang-master/bindings/python/examples/cindex/cindex-dump.py
 vim clang-master/bindings/python/examples/cindex/cindex-includes.py
 
+cffi framework
+----------------------------
+api vs abi
+parsing C prototypes
+generating binding in py or C
+compare performance
+
 ================================
 
 ctypes
