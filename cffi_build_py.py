@@ -3,10 +3,8 @@
 from cffi import FFI
 ffi = FFI()
 
-ffi.set_source("_cffi_foo",
-    """ // passed to the real C compiler
-        #include "foo.hpp"
-    """,
+ffi.set_source("_cffi_foo_py",
+    None,
     libraries=['foo'],
     library_dirs=['.'])
 
