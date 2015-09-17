@@ -60,33 +60,33 @@ class IntVec(object):
                     return self.ptr[self.current - 1]
         return IntVecIter(self._begin(), self.size())
 
-print "Let's create and delete immediately."
+print "\n--- Let's create and delete immediately."
 foo.IntVec_delete(foo.IntVec_create(10))
 
-print "Let's create named IntVec..."
+print "\n--- Let's create named IntVec..."
 v = IntVec(1)
-print "...again... (note deallocation of previous IntVec)"
+print "--- ...again... (note deallocation of previous IntVec)"
 v = IntVec(2)
-print "...and delete second one explicitly."
+print "--- ...and delete second one explicitly."
 del v
 
-print "Now let's fill elements..."
+print "\n--- Let's fill elements..."
 v = IntVec(3)
 v[0] = 42
 v[1] = 666
 v[2] = 65536
 print v
-print "...push_back a couple more..."
+print "--- ...push_back a couple more..."
 v.push_back(7)
 v.push_back(8)
 v.push_back(9)
 print v
-print "...sort them..."
+print "--- ...sort them..."
 v.sort(lambda x,y: x<y)
 print v
 v.sort(lambda x,y: x>y)
 print v
-print "...and resize down and up."
+print "--- ...and resize down and up."
 v.resize(2)
 print v
 v.resize(20)
