@@ -1,0 +1,39 @@
+fundamentals
+-------------------------
+what is das Linux
+what is distro
+what is Linux distro
+what is version
+what is Linux distro version
+what is Linux distro package metadata
+
+
+the world of ecl
+-------------------------
+what is ECL
+what is LFS
+what is relation between distro version and ecl
+
+
+sdk & packages
+-------------------------
+sdk is a toolchain plus sysroot
+  - has compiler, cmake, etc.
+packages are headers, libraries, executables, data files
+  - lim package with headers and libs
+  - ccs daemon exe binary
+distribution manifest groups package whereabouts
+
+
+maintainer role
+-------------------------
+- wrap prebuilt toolchain and lfs packages
+- build own packages (lim, meta, liboam)
+- upload sdk & packages to package server
+- detect changes and upgrade distro
+
+
+developer role
+-------------------------
+- build & test project based on sdk & packages
+- ci based on sdk & packages
