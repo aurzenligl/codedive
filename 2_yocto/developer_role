@@ -1,0 +1,37 @@
+XXXXXXXXXXXXXXXXXXX
+
+Developer's role is to download sdk, fill it with dependencies by:
+- installation by package manager
+- installation from .ipk package
+- installation from source manually
+and compile/test his code.
+
+XXXXXXXXXXXXXXXXXXX
+
+How to build and test project:
+
+1. Download proper version of sdk.
+2. Install sdk.
+3. Source sdk environment.
+4. Set proper distro.
+5. Download package manifest.
+6. Download packages.
+7. Configure.
+8. Build unit tests.
+9. Run unit tests.
+10. Build binaries.
+11. Install binaries.
+12. Run functional tests.
+
+(show example)
+
+XXXXXXXXXXXXXXXXXXX
+
+How to script continuous builder:
+
+1. CI script, e.g. buildbot master.cfg (project-specific)
+2. Build commands, e.g. Makefile.ci (branch-specific)
+3. CI web api
+4. Build server
+
+(show example)
