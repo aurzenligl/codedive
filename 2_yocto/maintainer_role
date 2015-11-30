@@ -13,6 +13,8 @@ It has subdirectories for product dirs.
 It has subdirectories for layers.
 It has branches for distros.
 
+(recipes repo)
+
 XXXXXXXXXXXXXXXXXXX
 
 Upgrading distro:
@@ -23,6 +25,8 @@ maintainer commit change to bitbake recipe[s].
 Usually this is a recipe file rename.
 This rebuilds and uploads new package[s] to file server.
 
+(recipe rename script and repo logs)
+
 XXXXXXXXXXXXXXXXXXX
 
 Editing bitbake recipe files:
@@ -32,11 +36,15 @@ Editing bitbake recipe files:
 - adding recipes
 - adding new products/architectures
 
+(recipe examples)
+
 XXXXXXXXXXXXXXXXXXX
 
 Controlling machines building packages:
 - packages must be built constantly and quickly
 - machines need to be powerful or numerous enough
+
+(buildbot and its logs)
 
 XXXXXXXXXXXXXXXXXXX
 
@@ -46,3 +54,4 @@ Maintaining sdk and package file servers:
 - fast: lot of folks will download from it
 - accessible: users may need access at any time
 
+(server directory structure)
