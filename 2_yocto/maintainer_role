@@ -1,0 +1,48 @@
+XXXXXXXXXXXXXXXXXXX
+
+Maintainer's role is to maintain:
+- bitbake recipes
+- building machines
+- sdk & package file servers
+
+XXXXXXXXXXXXXXXXXXX
+
+Bitbake recipes are held in repository.
+It bases on poky: yocto reference distro.
+It has subdirectories for product dirs.
+It has subdirectories for layers.
+It has branches for distros.
+
+XXXXXXXXXXXXXXXXXXX
+
+Upgrading distro:
+- when project releases new version
+- when dependencies change
+- when new project appears
+maintainer commit change to bitbake recipe[s].
+Usually this is a recipe file rename.
+This rebuilds and uploads new package[s] to file server.
+
+XXXXXXXXXXXXXXXXXXX
+
+Editing bitbake recipe files:
+- fixing incompatible build scripts
+- fixing wrong dependencies
+- accepting upstream recipes
+- adding recipes
+- adding new products/architectures
+
+XXXXXXXXXXXXXXXXXXX
+
+Controlling machines building packages:
+- packages must be built constantly and quickly
+- machines need to be powerful or numerous enough
+
+XXXXXXXXXXXXXXXXXXX
+
+Maintaining sdk and package file servers:
+- capacious: packages may take a lot of disk space
+- secure: recent packages need to be held intact
+- fast: lot of folks will download from it
+- accessible: users may need access at any time
+
