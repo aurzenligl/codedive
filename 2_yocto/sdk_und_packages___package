@@ -1,0 +1,82 @@
+XXXXXXXXXXXXXXXXXXX
+
+Packages fulfil a certain format, which package manager can understand.
+Opkg requires .ipk packages, format similar to .deb.
+
+XXXXXXXXXXXXXXXXXXX
+
+Package name has particular format.
+There are 3 sections separated by underscores:
+1. package name (project name, pre-/suffixes denote kind of package)
+2. package version
+3. package architecture
+
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+
+# lim # lib -dev
+# 0~FL00-LIM-0001-07-2898-r0
+# core2-64
+
+XXXXXXXXXXXXXXXXXXX
+
+Usually single project is partitioned to several kinds of packages:
+
+1. dynamic library
+liblim1_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+
+2. debug symbols and source code
+liblim-dbg_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+
+3. headers, link to dynamic library, package config file
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+
+4. static library
+liblim-staticdev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+
+XXXXXXXXXXXXXXXXXXX
+
+Package is a compressed archive with following contents:
+
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+├── CONTENTS
+│   └── usr
+│       ├── include
+│       │   └── lim
+│       │       └── ...
+│       └── lib64
+│           ├── liblim.so -> liblim.so.1
+│           └── pkgconfig
+│               └── lim.pc
+├── DEBIAN
+│   └── control
+├── INFO
+└── INSTALL
+
+XXXXXXXXXXXXXXXXXXX
+
+DEBIAN/control file contains package metadata.
+Name, version, dependencies and their versions.
+
+Package: liblim-dev
+Version: 0~FL00-LIM-0001-07-2898-r0
+Description: lim version 0~FL00-LIM-0001-07-2898-r0 - Development files
+ lim version 0~FL00-LIM-0001-07-2898-r0.  This package contains symbolic
+ links, header files, and related items necessary for software
+ development.
+Section: devel
+Priority: optional
+Maintainer: *****
+License: CLOSED
+Architecture: core2-64
+OE: lim
+Depends: liblim1 (= 0~FL00-LIM-0001-07-2898-r0)
+Recommends: *****
+Source: *****
+
+XXXXXXXXXXXXXXXXXXX
+
+Packages which contain only data or only headers
+can have architecture "all".
+
+Such packages are reused
+between different architectures of a distro.

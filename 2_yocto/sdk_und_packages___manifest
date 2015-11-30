@@ -1,0 +1,27 @@
+XXXXXXXXXXXXXXXXXXX
+
+Packages file contains information about distribution.
+It's a text file with concatenated package metadata (DEBIAN/control).
+
+Package: project1
+Version: 1.2.0
+Recommends: ***
+Architecture: core2-64
+...
+
+Package: project2
+Version: 0.3.0
+Depends: ***
+Provides: ***
+Recommends: ***
+Architecture: all
+...
+
+XXXXXXXXXXXXXXXXXXX
+
+Packages file is usually downloaded compressed.
+It's large and text - compresses well.
+
+38195 Oct 27 10:27 Packages
+ 5212 Oct 27 10:27 Packages.gz
+
