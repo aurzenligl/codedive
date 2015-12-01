@@ -22,22 +22,22 @@ Sdk deploys anywhere you want. It contains:
 - toolchain sysroot
 
 sdk
-├── environment-setup-core2-64-nokia-linux
-├── site-config-core2-64-nokia-linux
-├── sysroots
-│   ├── core2-64-nokia-linux
-│   │   ├── etc
-│   │   ├── lib64
-│   │   ├── usr
-│   │   └── var
-│   └── i686-nsnsdk-linux
-│       ├── bin
-│       ├── etc
-│       ├── lib
-│       ├── usr
-│       ├── var
-│       └── x86_64-pc-linux-gnu
-└── version-core2-64-nokia-linux
+|-- environment-setup-core2-64-nokia-linux
+|-- site-config-core2-64-nokia-linux
+|-- sysroots
+|   |-- core2-64-nokia-linux
+|   |   |-- etc
+|   |   |-- lib64
+|   |   |-- usr
+|   |   \-- var
+|   \-- i686-nsnsdk-linux
+|       |-- bin
+|       |-- etc
+|       |-- lib
+|       |-- usr
+|       |-- var
+|       \-- x86_64-pc-linux-gnu
+\-- version-core2-64-nokia-linux
 
 XXXXXXXXXXXXXXXXXXX
 
@@ -71,23 +71,23 @@ XXXXXXXXXXXXXXXXXXX
 Toolchain sysroot contains compiler and tools.
 
 bin
-├── x86_64-pc-linux-gnu-g++
-├── x86_64-pc-linux-gnu-gcc
-├── x86_64-pc-linux-gnu-ld
-├── x86_64-pc-linux-gnu-nm
-├── x86_64-pc-linux-gnu-readelf
-├── x86_64-pc-linux-gnu-size
-├── x86_64-pc-linux-gnu-strings
-└── x86_64-pc-linux-gnu-strip
+|-- x86_64-pc-linux-gnu-g++
+|-- x86_64-pc-linux-gnu-gcc
+|-- x86_64-pc-linux-gnu-ld
+|-- x86_64-pc-linux-gnu-nm
+|-- x86_64-pc-linux-gnu-readelf
+|-- x86_64-pc-linux-gnu-size
+|-- x86_64-pc-linux-gnu-strings
+\-- x86_64-pc-linux-gnu-strip
 
 usr
-└── bin
-    ├── cmake
-    ├── opkg -> opkg-cl
-    ├── opkg-cl
-    ├── pkg-config
-    ├── prophyc
-    └── protoc
+\-- bin
+    |-- cmake
+    |-- opkg -> opkg-cl
+    |-- opkg-cl
+    |-- pkg-config
+    |-- prophyc
+    \-- protoc
 
 XXXXXXXXXXXXXXXXXXX
 
@@ -99,27 +99,26 @@ Target sysroot is a placeholder for target related
 It may be empty after sdk deployment.
 
 usr
-└── bin
-    └── CCSDaemonExe
+\-- bin
+    \-- CCSDaemonExe
 
 usr
-├── include
-│   └── boost
-│       └── chrono
-│           ├── ceil.hpp
-│           └── chrono.hpp
-└── lib64
-    ├── pkgconfig
-    │   └── prophy.pc
-    ├── libboost_chrono.so -> libboost_chrono.so.1.59.0
-    └── libboost_chrono.so.1.59.0
+|-- include
+|   \-- boost
+|       \-- chrono
+|           |-- ceil.hpp
+|           \-- chrono.hpp
+\-- lib64
+    |-- pkgconfig
+    |   \-- prophy.pc
+    |-- libboost_chrono.so -> libboost_chrono.so.1.59.0
+    \-- libboost_chrono.so.1.59.0
 
 etc
-└── opkg
-    └── opkg.conf
+\-- opkg
+    \-- opkg.conf
 
 usr
-└── share
-    └── bpf
-        └── bpf.xml
-
+\-- share
+    \-- bpf
+        \-- bpf.xml

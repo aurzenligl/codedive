@@ -8,10 +8,24 @@
 }
 
 \usepackage[english]{babel}
-\usepackage[latin1]{inputenc}
 \usepackage{times}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{textcomp}
+
+\lstdefinestyle{ConsoleStyle}{
+    keepspaces=true,
+    basicstyle=\scriptsize\ttfamily,
+    numberstyle=\scriptsize,
+    numbers=none,
+    frame=tblr,
+    columns=fullflexible,
+    backgroundcolor=\color{blue!10},
+    linewidth=1\linewidth,
+    xleftmargin=0\linewidth
+}
 
 \title[Yocto: The Practical Guide]{Yocto}
 \subtitle{The Practical Guide}
@@ -80,7 +94,55 @@
 
 \subsection{SDK}
 
-\begin{frame}
+\begin{frame}{What is SDK?}
+    \begin{block}{}
+        An \emph{SDK} is a toolchain and sysroot.
+        It has all fundamentals needed to develop/crosscompile for particular platform.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{SDK installs}
+\begin{block}{}
+SDK comes in form of installable shell script: shar
+(shell archive).
+\end{block}
+\begin{lstlisting}[style=ConsoleStyle]
+$ ./***-toolchain-***.sh
+Enter target directory for SDK (default: /opt/***/1.6.1): sdk
+You are about to install the SDK to "/***/sdk". Proceed[Y/n]?
+Extracting SDK...done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{SDK has a directory structure}
+\begin{block}{}
+\begin{itemize}
+\item{setup script}
+\item{target sysroot}
+\item{toolchain sysroot}
+\end{itemize}
+\end{block}
+\begin{lstlisting}[style=ConsoleStyle,basicstyle=\ttfamily\tiny]
+sdk
+|-- environment-setup-core2-64-nokia-linux
+|-- site-config-core2-64-nokia-linux
+|-- sysroots
+|   |-- core2-64-nokia-linux
+|   |   |-- etc
+|   |   |-- lib64
+|   |   |-- usr
+|   |   \-- var
+|   \-- i686-nsnsdk-linux
+|       |-- bin
+|       |-- etc
+|       |-- lib
+|       |-- usr
+|       |-- var
+|       \-- x86_64-pc-linux-gnu
+\-- version-core2-64-nokia-linux
+\end{lstlisting}
 \end{frame}
 
 \subsection{Package}
