@@ -15,10 +15,22 @@
 \usepackage{listings}
 \usepackage{textcomp}
 
-\lstdefinestyle{ConsoleStyle}{
+\lstdefinestyle{Console}{
     keepspaces=true,
     basicstyle=\scriptsize\ttfamily,
     numberstyle=\scriptsize,
+    numbers=none,
+    frame=tblr,
+    columns=fullflexible,
+    backgroundcolor=\color{blue!10},
+    linewidth=1\linewidth,
+    xleftmargin=0\linewidth
+}
+
+\lstdefinestyle{TinyConsole}{
+    keepspaces=true,
+    basicstyle=\tiny\ttfamily,
+    numberstyle=\tiny,
     numbers=none,
     frame=tblr,
     columns=fullflexible,
@@ -96,8 +108,10 @@
 
 \begin{frame}{What is SDK?}
     \begin{block}{}
-        An \emph{SDK} is a toolchain and sysroot.
-        It has all fundamentals needed to develop/crosscompile for particular platform.
+        An \textbf{SDK} is a toolchain and sysroot.
+    \end{block}
+    \begin{block}{}
+        It has essentials needed to develop/crosscompile for particular platform.
     \end{block}
 \end{frame}
 
@@ -106,7 +120,7 @@
 SDK comes in form of installable shell script: shar
 (shell archive).
 \end{block}
-\begin{lstlisting}[style=ConsoleStyle]
+\begin{lstlisting}[style=Console]
 $ ./***-toolchain-***.sh
 Enter target directory for SDK (default: /opt/***/1.6.1): sdk
 You are about to install the SDK to "/***/sdk". Proceed[Y/n]?
@@ -124,7 +138,7 @@ SDK has been successfully set up and is ready to be used.
 \item{toolchain sysroot}
 \end{itemize}
 \end{block}
-\begin{lstlisting}[style=ConsoleStyle,basicstyle=\ttfamily\tiny]
+\begin{lstlisting}[style=TinyConsole]
 sdk
 |-- environment-setup-core2-64-nokia-linux
 |-- site-config-core2-64-nokia-linux
@@ -143,6 +157,56 @@ sdk
 |       \-- x86_64-pc-linux-gnu
 \-- version-core2-64-nokia-linux
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile, t]{SDK has environment script}
+    \begin{block}{}
+        Sets path, auxiliary and program specific variables:
+        \begin{itemize}
+            \scriptsize
+            \item<1->{to know location of sysroots}
+            \item<2->{to use \verb|[archprefix]-gcc|, \verb|cmake|, \verb|opkg|}
+            \item<3->{for \verb|pkg-config|, \verb|opkg|, \verb|python| to use sdk}
+            \item<4->{\verb|CC|, \verb|CXX|, \verb|LD| for build tool to detect}
+            \item<5->{libdir and dynlinker to execute binaries}
+        \end{itemize}
+    \end{block}
+    \begin{onlyenv}<1>
+\begin{lstlisting}[style=TinyConsole]
+export SDKTARGETSYSROOT=/***/sdk/sysroots/core2-64-nokia-linux
+export OECORE_NATIVE_SYSROOT="/***/sdk/sysroots/i686-nsnsdk-linux"
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
+\begin{lstlisting}[style=TinyConsole]
+export PATH=/***/sdk/sysroots/i686-nsnsdk-linux/usr/bin: \
+            /***/sdk/sysroots/i686-nsnsdk-linux/usr/bin/x86_64-nokia-linux: \
+            $PATH
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<3>
+\begin{lstlisting}[style=TinyConsole]
+export CC="x86_64-pc-linux-gnu-gcc -m64 --sysroot=$SDKTARGETSYSROOT"
+export CXX="x86_64-pc-linux-gnu-g++ -m64 --sysroot=$SDKTARGETSYSROOT"
+export CPP="x86_64-pc-linux-gnu-gcc -E -m64 --sysroot=$SDKTARGETSYSROOT"
+export AS="x86_64-pc-linux-gnu-as"
+export LD="x86_64-pc-linux-gnu-ld --sysroot=$SDKTARGETSYSROOT"
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<4>
+\begin{lstlisting}[style=TinyConsole]
+export PKG_CONFIG_SYSROOT_DIR=$SDKTARGETSYSROOT
+export PKG_CONFIG_PATH=$SDKTARGETSYSROOT/usr/lib64/pkgconfig
+export OFFLINE_ROOT=$SDKTARGETSYSROOT
+export PYTHONPATH=$OECORE_NATIVE_SYSROOT/usr/lib/python2.7/site-packages:$PYTHONPATH
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<5>
+\begin{lstlisting}[style=TinyConsole]
+export SYSROOT_LIB_DIR=$SDKTARGETSYSROOT/usr/lib64:$SDKTARGETSYSROOT/lib64
+export SYSROOT_DYN_LINKER=$SDKTARGETSYSROOT/lib64/ld-linux-x86-64.so.2
+\end{lstlisting}
+    \end{onlyenv}
 \end{frame}
 
 \subsection{Package}
