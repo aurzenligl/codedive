@@ -60,46 +60,36 @@
 
 \subsection{Fundamentals}
 
-\begin{frame}
-    what is das Linux
+\begin{frame}{what is das Linux}
 \end{frame}
 
-\begin{frame}
-    what is distro
+\begin{frame}{what is distro}
 \end{frame}
 
-\begin{frame}
-    what is Linux distro
+\begin{frame}{what is Linux distro}
 \end{frame}
 
-\begin{frame}
-    what is version
+\begin{frame}{what is version}
 \end{frame}
 
-\begin{frame}
-    what is semantic version
+\begin{frame}{what is semantic version}
 \end{frame}
 
-\begin{frame}
-    what is Linux distro version
+\begin{frame}{what is Linux distro version}
 \end{frame}
 
-\begin{frame}
-    what is Linux distro package metadata
+\begin{frame}{what is Linux distro package metadata}
 \end{frame}
 
 \subsection{The world of ECL}
 
-\begin{frame}
-    what is ECL
+\begin{frame}{what is ECL}
 \end{frame}
 
-\begin{frame}
-    what is LFS
+\begin{frame}{what is LFS}
 \end{frame}
 
-\begin{frame}
-    what is relation between distro version and ecl
+\begin{frame}{what is relation between distro version and ecl}
 \end{frame}
 
 \section{Artifacts}
@@ -207,6 +197,92 @@ export SYSROOT_LIB_DIR=$SDKTARGETSYSROOT/usr/lib64:$SDKTARGETSYSROOT/lib64
 export SYSROOT_DYN_LINKER=$SDKTARGETSYSROOT/lib64/ld-linux-x86-64.so.2
 \end{lstlisting}
     \end{onlyenv}
+\end{frame}
+
+\begin{frame}[fragile]{SDK toolchain has compilers and tools}
+\begin{lstlisting}[style=TinyConsole]
+bin
+|-- x86_64-pc-linux-gnu-g++
+|-- x86_64-pc-linux-gnu-gcc
+|-- x86_64-pc-linux-gnu-ld
+|-- x86_64-pc-linux-gnu-nm
+|-- x86_64-pc-linux-gnu-readelf
+|-- x86_64-pc-linux-gnu-size
+|-- x86_64-pc-linux-gnu-strings
+\-- x86_64-pc-linux-gnu-strip
+\end{lstlisting}
+\begin{lstlisting}[style=TinyConsole]
+usr
+\-- bin
+    |-- cmake
+    |-- opkg -> opkg-cl
+    |-- opkg-cl
+    |-- pkg-config
+    |-- prophyc
+    \-- protoc
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile, t]{SDK sysroot holds target-related stuff}
+    \begin{block}{}
+        \begin{itemize}
+            \item<1->{executables \& scripts}
+            \item<2->{libraries \& headers \& pc files}
+            \item<3->{configuration}
+            \item<4->{data}
+        \end{itemize}
+    \end{block}
+    \begin{onlyenv}<1>
+\begin{lstlisting}[style=TinyConsole]
+usr
+\-- bin
+    \-- CCSDaemonExe
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
+\begin{lstlisting}[style=TinyConsole]
+usr
+|-- include
+|   \-- boost
+|       \-- chrono
+|           |-- ceil.hpp
+|           \-- chrono.hpp
+\-- lib64
+    |-- pkgconfig
+    |   \-- prophy.pc
+    |-- libboost_chrono.so -> libboost_chrono.so.1.59.0
+    \-- libboost_chrono.so.1.59.0
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<3>
+\begin{lstlisting}[style=TinyConsole]
+etc
+\-- opkg
+    \-- opkg.conf
+\end{lstlisting}
+    \end{onlyenv}
+    \begin{onlyenv}<4>
+\begin{lstlisting}[style=TinyConsole]
+usr
+\-- share
+    \-- bpf
+        \-- bpf.xml
+\end{lstlisting}
+    \end{onlyenv}
+\end{frame}
+
+\begin{frame}{SDK sysroot is filled bottom-up}
+    \begin{block}{}
+        \begin{itemize}
+            \item{may be empty after sdk deployment}
+            \item{will be filled according to dependencies}
+            \begin{itemize}
+                \item{by package manager \& server}
+                \item{by manual package installation}
+                \item{by manual build \& installation from source}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \subsection{Package}
