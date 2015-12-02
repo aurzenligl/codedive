@@ -36,7 +36,8 @@
     columns=fullflexible,
     backgroundcolor=\color{blue!10},
     linewidth=1\linewidth,
-    xleftmargin=0\linewidth
+    xleftmargin=0\linewidth,
+    moredelim=[is][\textbf]{@}{@}
 }
 
 \title[Yocto: The Practical Guide]{Yocto}
@@ -162,8 +163,8 @@ sdk
             \scriptsize
             \item<1->{to know location of sysroots}
             \item<2->{to use \verb|[archprefix]-gcc|, \verb|cmake|, \verb|opkg|}
-            \item<3->{for \verb|pkg-config|, \verb|opkg|, \verb|python| to use sdk}
-            \item<4->{\verb|CC|, \verb|CXX|, \verb|LD| for build tool to detect}
+            \item<3->{\verb|CC|, \verb|CXX|, \verb|LD| for build tool to detect}
+            \item<4->{for \verb|pkg-config|, \verb|opkg|, \verb|python| to use sdk}
             \item<5->{libdir and dynlinker to execute binaries}
         \end{itemize}
     \end{block}
@@ -293,7 +294,39 @@ usr
 
 \subsection{Package}
 
-\begin{frame}
+\begin{frame}[fragile]{Package has specific format}
+    \begin{block}{}
+        Packages fulfil a certain format, which package manager can understand.
+    \end{block}
+    \begin{block}{}
+        Opkg requires \verb|.ipk| packages, format similar to \verb|.deb|.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Package has specific name}
+    \begin{block}{}
+        There are 3 sections separated by underscores
+        \begin{itemize}
+            \item<2->{name \only<3->{and kind}}
+            \item<4->{version}
+            \item<5->{architecture}
+        \end{itemize}
+    \end{block}
+\begin{onlyenv}<1>\begin{lstlisting}[style=TinyConsole]
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}\end{onlyenv}
+\begin{onlyenv}<2>\begin{lstlisting}[style=TinyConsole]
+lib@lim@-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}\end{onlyenv}
+\begin{onlyenv}<3>\begin{lstlisting}[style=TinyConsole]
+@liblim-dev@_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}\end{onlyenv}
+\begin{onlyenv}<4>\begin{lstlisting}[style=TinyConsole]
+liblim-dev_@0~FL00-LIM-0001-07-2898-r0@_core2-64.ipk
+\end{lstlisting}\end{onlyenv}
+\begin{onlyenv}<5>\begin{lstlisting}[style=TinyConsole]
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_@core2-64@.ipk
+\end{lstlisting}\end{onlyenv}
 \end{frame}
 
 \subsection{Index}
