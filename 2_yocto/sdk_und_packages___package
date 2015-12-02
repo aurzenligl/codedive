@@ -38,19 +38,19 @@ XXXXXXXXXXXXXXXXXXX
 Package is a compressed archive with following contents:
 
 liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
-├── CONTENTS
-│   └── usr
-│       ├── include
-│       │   └── lim
-│       │       └── ...
-│       └── lib64
-│           ├── liblim.so -> liblim.so.1
-│           └── pkgconfig
-│               └── lim.pc
-├── DEBIAN
-│   └── control
-├── INFO
-└── INSTALL
+|-- CONTENTS
+│   \-- usr
+│       |-- include
+│       │   \-- lim
+│       │       \-- ...
+│       \-- lib64
+│           |-- liblim.so -> liblim.so.1
+│           \-- pkgconfig
+│               \-- lim.pc
+|-- DEBIAN
+│   \-- control
+|-- INFO
+\-- INSTALL
 
 XXXXXXXXXXXXXXXXXXX
 

@@ -24,7 +24,8 @@
     columns=fullflexible,
     backgroundcolor=\color{blue!10},
     linewidth=1\linewidth,
-    xleftmargin=0\linewidth
+    xleftmargin=0\linewidth,
+    moredelim=[is][\textbf]{@@@}{@@@}
 }
 
 \lstdefinestyle{TinyConsole}{
@@ -37,7 +38,7 @@
     backgroundcolor=\color{blue!10},
     linewidth=1\linewidth,
     xleftmargin=0\linewidth,
-    moredelim=[is][\textbf]{@}{@}
+    moredelim=[is][\textbf]{@@@}{@@@}
 }
 
 \title[Yocto: The Practical Guide]{Yocto}
@@ -294,7 +295,7 @@ usr
 
 \subsection{Package}
 
-\begin{frame}[fragile]{Package has specific format}
+\begin{frame}[fragile]{Package has format}
     \begin{block}{}
         Packages fulfil a certain format, which package manager can understand.
     \end{block}
@@ -303,30 +304,127 @@ usr
     \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Package has specific name}
+\begin{frame}[fragile]{Package has name}
     \begin{block}{}
         There are 3 sections separated by underscores
         \begin{itemize}
-            \item<2->{name \only<3->{and kind}}
+            \item<2->{name \only<3->{and purpose}}
             \item<4->{version}
             \item<5->{architecture}
         \end{itemize}
     \end{block}
-\begin{onlyenv}<1>\begin{lstlisting}[style=TinyConsole]
+\begin{onlyenv}<1>\begin{lstlisting}[style=Console]
 liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
 \end{lstlisting}\end{onlyenv}
-\begin{onlyenv}<2>\begin{lstlisting}[style=TinyConsole]
-lib@lim@-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\begin{onlyenv}<2>\begin{lstlisting}[style=Console]
+lib@@@lim@@@-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
 \end{lstlisting}\end{onlyenv}
-\begin{onlyenv}<3>\begin{lstlisting}[style=TinyConsole]
-@liblim-dev@_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\begin{onlyenv}<3>\begin{lstlisting}[style=Console]
+@@@liblim-dev@@@_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
 \end{lstlisting}\end{onlyenv}
-\begin{onlyenv}<4>\begin{lstlisting}[style=TinyConsole]
-liblim-dev_@0~FL00-LIM-0001-07-2898-r0@_core2-64.ipk
+\begin{onlyenv}<4>\begin{lstlisting}[style=Console]
+liblim-dev_@@@0~FL00-LIM-0001-07-2898-r0@@@_core2-64.ipk
 \end{lstlisting}\end{onlyenv}
-\begin{onlyenv}<5>\begin{lstlisting}[style=TinyConsole]
-liblim-dev_0~FL00-LIM-0001-07-2898-r0_@core2-64@.ipk
+\begin{onlyenv}<5>\begin{lstlisting}[style=Console]
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_@@@core2-64@@@.ipk
 \end{lstlisting}\end{onlyenv}
+\end{frame}
+
+\begin{frame}[fragile]{Package has purpose}
+    \begin{block}{}
+        Usually single project is partitioned to several packages.
+        Each package serves a different purpose.
+    \end{block}
+    \begin{itemize}
+        \item{
+            dynamic library \hfill to run
+\begin{lstlisting}[style=Console]
+liblim1_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}
+        }
+        \item{
+            debug symbols and source code \hfill to debug
+\begin{lstlisting}[style=Console]
+liblim-dbg_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}
+        }
+        \item{
+            headers, library link, \verb|.pc| file \hfill to link against
+\begin{lstlisting}[style=Console]
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}
+        }
+        \item{
+            static library \hfill to link against all symbols
+\begin{lstlisting}[style=Console]
+liblim-staticdev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+\end{lstlisting}
+        }
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Package has directory layout}
+    \begin{block}{}
+        Package is a compressed archive with directory structure
+        \begin{itemize}
+            \item{piece of sysroot to install}
+            \item{metadata}
+        \end{itemize}
+    \end{block}
+\begin{lstlisting}[style=Console]
+liblim-dev_0~FL00-LIM-0001-07-2898-r0_core2-64.ipk
+|-- CONTENTS
+|   \-- usr
+|       |-- include
+|       |   \-- lim
+|       |       \-- ...
+|       \-- lib64
+|           |-- liblim.so -> liblim.so.1
+|           \-- pkgconfig
+|               \-- lim.pc
+|-- DEBIAN
+|   \-- control
+|-- INFO
+\-- INSTALL
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Package has metadata}
+    \begin{block}{}
+        File \verb|DEBIAN/control| contains package metadata.
+    \end{block}
+\begin{lstlisting}[style=Console]
+@@@Package: liblim-dev@@@
+@@@Version: 0~FL00-LIM-0001-07-2898-r0@@@
+Description: *****
+Section: devel
+Priority: optional
+Maintainer: *****
+License: CLOSED
+@@@Architecture: core2-64@@@
+OE: lim
+@@@Depends: liblim1 (= 0~FL00-LIM-0001-07-2898-r0)@@@
+Recommends: *****
+Source: *****
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Package has project information}
+    \begin{block}{}
+        Package metadata alone can point to
+        rich source of project related information.
+    \end{block}
+\begin{lstlisting}[style=Console]
+Package: opera
+...
+Maintainer: Opera Packaging Team <packager@opera.com>
+Bugs: https://bugs.opera.com/wizard/
+Homepage: http://www.opera.com/browser/
+\end{lstlisting}
+    \begin{block}{}
+        This data is easy to keep up to date since
+        packages update constantly.
+    \end{block}
 \end{frame}
 
 \subsection{Index}
