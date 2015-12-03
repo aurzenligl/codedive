@@ -88,12 +88,9 @@
 
 \section{Artifacts}
 
-\begin{frame}{Artifacts: sdk, package, index}
-    \begin{columns}
-    \column{1\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{Hugo_van_der_Goes_-_The_Adoration_of_the_Kings.jpg}
-    \end{columns}
+\begin{frame}{Artifacts: sdk, package and index}
+    \centering
+    \includegraphics[width=\linewidth]{Hugo_van_der_Goes_-_The_Adoration_of_the_Kings.jpg}
 \end{frame}
 
 \subsection{SDK}
@@ -555,6 +552,11 @@ ECL
 
 \section{Roles}
 
+\begin{frame}{Roles: developer and maintainer}
+    \centering
+    \includegraphics[width=\linewidth]{Michelangelo_-_The_Creation_of_Adam.jpg}
+\end{frame}
+
 \subsection{Developer}
 
 \begin{frame}[fragile]{Developer uses sdk}
@@ -662,6 +664,24 @@ ECL
         and build image without influencing developers. \\
         Should integration prove troublesome, he can ask specific
         projects to provide patches or adapted versions.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Maintainer adds products}
+    \begin{block}{}
+        Each time when new board or processor architecture
+        appears maintainer adds a product dir for it.
+    \end{block}
+    \begin{block}{}
+        \color{green!60!black}
+        Effort to introduce new product is small, since:
+        \begin{itemize}
+            \color{green!60!black}
+            \item{cpu architecture config (gcc target, tune)}
+            \item{kernel config, drivers, board support package}
+            \item{user space recipes}
+        \end{itemize}
+        are largely orthogonal.
     \end{block}
 \end{frame}
 

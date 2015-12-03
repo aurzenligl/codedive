@@ -29,17 +29,6 @@ This rebuilds and uploads new package[s] to file server.
 
 XXXXXXXXXXXXXXXXXXX
 
-Editing bitbake recipe files:
-- fixing incompatible build scripts
-- fixing wrong dependencies
-- accepting upstream recipes
-- adding recipes
-- adding new products/architectures
-
-(recipe examples)
-
-XXXXXXXXXXXXXXXXXXX
-
 Controlling machines building packages:
 - packages must be built constantly and quickly
 - machines need to be powerful or numerous enough
