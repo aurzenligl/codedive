@@ -63,36 +63,26 @@
 
 \subsection{Fundamentals}
 
-\begin{frame}{what is das Linux}
-\end{frame}
-
-\begin{frame}{what is distro}
-\end{frame}
-
-\begin{frame}{what is Linux distro}
-\end{frame}
-
-\begin{frame}{what is version}
-\end{frame}
-
-\begin{frame}{what is semantic version}
-\end{frame}
-
-\begin{frame}{what is Linux distro version}
-\end{frame}
-
-\begin{frame}{what is Linux distro package metadata}
+\begin{frame}{Fundamentals}
+    \begin{itemize}
+        \item what is das Linux
+        \item what is distro
+        \item what is Linux distro
+        \item what is version
+        \item what is semantic version
+        \item what is Linux distro version
+        \item what is Linux distro package metadata
+    \end{itemize}
 \end{frame}
 
 \subsection{The world of ECL}
 
-\begin{frame}{what is ECL}
-\end{frame}
-
-\begin{frame}{what is LFS}
-\end{frame}
-
-\begin{frame}{what is relation between distro version and ecl}
+\begin{frame}{The world of ECL}
+    \begin{itemize}
+        \item what is ECL
+        \item what is LFS
+        \item what is relation between distro version and ecl
+    \end{itemize}
 \end{frame}
 
 \section{Artifacts}
@@ -479,7 +469,87 @@ Homepage: http://www.opera.com/browser/
 
 \subsection{Index}
 
-\begin{frame}
+\begin{frame}[fragile]{Index lists packages}
+    \begin{block}{}
+        Index file contains information about distribution.
+        It's a text file with concatenated package metadata
+        (same key-value pairs as in DEBIAN/control).
+    \end{block}
+    \begin{block}{}
+        It's named \verb|Packages| or - if compressed - \verb|Packages.gz|.
+    \end{block}
+\begin{lstlisting}[style=Console]
+Package: project1
+Version: 1.2.0
+Recommends: ***
+...
+
+Package: project2
+Version: 0.3.0
+Depends: ***
+...
+
+... ... ...
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Index is compressed}
+Index file is usually stored and downloaded compressed.
+It's large and text - compresses well.
+\begin{lstlisting}[style=Console]
+38195 Oct 27 10:27 Packages
+ 5212 Oct 27 10:27 Packages.gz
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile, t]{Index family is a distro}
+    \begin{block}{}
+        Index file groups packages belonging to specific:
+        \begin{itemize}
+            \item<1-> architecture
+            \item<2-> version
+            \item<3-> release
+        \end{itemize}
+    \end{block}
+\begin{onlyenv}<1>\begin{lstlisting}[style=TinyConsole]
+51971
+|-- all
+|   `-- @@@Packages.gz@@@
+|-- core2-64
+|   `-- @@@Packages.gz@@@
+|-- cortexa15hf-vfp
+|   `-- @@@Packages.gz@@@
+|-- i586
+|   `-- @@@Packages.gz@@@
+|-- mips64-nf
+|   `-- @@@Packages.gz@@@
+`-- ppce500
+    `-- @@@Packages.gz@@@
+\end{lstlisting}\end{onlyenv}
+\begin{onlyenv}<2>\begin{lstlisting}[style=TinyConsole]
+ECL
+|-- @@@51955@@@
+|-- @@@51962@@@
+|-- @@@51965@@@
+|-- @@@51971@@@
+`-- @@@51988@@@
+\end{lstlisting}\end{onlyenv}
+\begin{onlyenv}<3>\begin{lstlisting}[style=TinyConsole]
+.
+|-- BTS_SCM_LTE_ECL
+|   `-- trunk
+|       `-- ECL_SACK_BASE
+|           `-- @@@ECL@@@
+`-- BTS_SCM_OAM_LTE_ECL
+    |-- branches
+    |   `-- maintenance
+    |       `-- xL15A
+    |           `-- ECL_OAM
+    |               `-- @@@ECL@@@
+    `-- trunk
+        `-- ECL_OAM
+            `-- @@@ECL@@@
+\end{lstlisting}\end{onlyenv}
 \end{frame}
 
 \section{Roles}
