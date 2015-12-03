@@ -15,6 +15,7 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{textcomp}
+\usepackage{multicol}
 
 \lstdefinestyle{Console}{
     keepspaces=true,
@@ -554,12 +555,77 @@ ECL
 
 \section{Roles}
 
-\subsection{Maintainer}
+\subsection{Developer}
 
-\begin{frame}
+\begin{frame}[fragile]{Developer uses sdk}
+    \begin{block}{}
+        Developer downloads sdk, fills it by:
+        \begin{itemize}
+            \item installation by package manager
+            \item installation by \verb|.ipk| package
+            \item installation by building sources
+        \end{itemize}
+        and compiles/tests his code.
+    \end{block}
+    \begin{block}{}
+        \color{green!60!black}
+        Developer may play with sdk contents and change, mix, hack, corrupt them.
+        Recreating sdk with dependencies is cheap and takes a minute.
+    \end{block}
 \end{frame}
 
-\subsection{Developer}
+\begin{frame}[fragile]{Developer respects rules}
+    \begin{block}{This saves the day for maintainers}
+        Conform to linux directory structure.
+        Install relevant things in \verb|include|, \verb|bin|,
+        \verb|lib[64]|, \verb|share|, \verb|.pc|.
+    \end{block}
+    \begin{block}{This saves the day for your users}
+        Be very strict about public API.
+        Separate it clearly from internal logic.
+        Keep source, binary and functional compatibility in check.
+    \end{block}
+    \begin{block}{}
+        \color{red!60!black}
+        Developer doesn't use bitbake. \\
+        Developer doesn't have to write recipes.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Let's build \color{blue}{(example)}}
+    Once upon a time there was a project. \\
+    Let's build and test it:
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item Download proper sdk.
+            \item Install sdk.
+            \item Source sdk environment.
+            \item Set proper distro.
+            \item Download index.
+            \item Download packages.
+            \item Configure.
+            \item Build unit tests.
+            \item Run unit tests.
+            \item Build binaries.
+            \item Install binaries.
+            \item Run functional tests.
+        \end{enumerate}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]{Let's CI \color{blue}{(example)}}
+    Once upon a time there was a different project. \\
+    Let's inspect its CI scripts:
+    \vspace{\baselineskip}
+    \begin{enumerate}
+        \item Build commands in \verb|Makefile.ci|.
+        \item Buildbot \verb|master.cfg|.
+        \item Buildbot web api.
+        \item Build machines.
+    \end{enumerate}
+\end{frame}
+
+\subsection{Maintainer}
 
 \begin{frame}
 \end{frame}
