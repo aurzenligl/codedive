@@ -627,7 +627,63 @@ ECL
 
 \subsection{Maintainer}
 
-\begin{frame}
+\begin{frame}{Maintainer produces sdk \& packages}
+    \begin{block}{}
+        Maintainer maintains:
+        \begin{itemize}
+            \item{in-house bitbake layer repositories}
+            \item{building machines}
+            \item{sdk \& package file servers}
+        \end{itemize}
+    \end{block}
+    \begin{block}{}
+        \color{red!60!black}
+        Maintainer doesn't release project versions. \\
+        Maintainer doesn't care about project CIs.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Maintainer upgrades distro}
+    \begin{block}{}
+        Distro upgrades:
+        \begin{itemize}
+            \item{when project releases new version}
+            \item{when dependencies change}
+            \item{when new project gets added}
+        \end{itemize}
+    \end{block}
+    \begin{block}{}
+        Maintainer commits changes to recipes (usually renames).
+        This rebuilds and uploads new packages to file server.
+    \end{block}
+    \begin{block}{}
+        \color{green!60!black}
+        Maintainer can change version of a project
+        and build image without influencing developers. \\
+        Should integration prove troublesome, he can ask specific
+        projects to provide patches or adapted versions.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Let's peek at recipe repository \color{blue}{(example)}}
+    Bitbake recipes are held in repository.
+    \vspace{\baselineskip}
+    \begin{enumerate}
+        \item{It bases on \verb|poky|: yocto reference distro.}
+        \item{It has subdirectories for products.}
+        \item{It has subdirectories for layers.}
+        \item{It has branches for releases.}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Let's peek at continuous package builder \color{blue}{(example)}}
+    When ecl changes, distro upgrades.
+    \vspace{\baselineskip}
+    \begin{enumerate}
+        \item{Ecl watcher detects the change.}
+        \item{Change gets committed as recipes renames.}
+        \item{Yocto CI reacts building and uploading packages.}
+    \end{enumerate}
 \end{frame}
 
 \end{document}
