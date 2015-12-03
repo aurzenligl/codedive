@@ -208,7 +208,7 @@ export SYSROOT_DYN_LINKER=$SDKTARGETSYSROOT/lib64/ld-linux-x86-64.so.2
 \end{frame}
 
 \begin{frame}[fragile]{SDK toolchain has compilers and tools}
-\begin{lstlisting}[style=TinyConsole]
+\begin{lstlisting}[style=Console]
 bin
 |-- x86_64-pc-linux-gnu-g++
 |-- x86_64-pc-linux-gnu-gcc
@@ -219,7 +219,7 @@ bin
 |-- x86_64-pc-linux-gnu-strings
 \-- x86_64-pc-linux-gnu-strip
 \end{lstlisting}
-\begin{lstlisting}[style=TinyConsole]
+\begin{lstlisting}[style=Console]
 usr
 \-- bin
     |-- cmake
@@ -241,19 +241,18 @@ usr
         \end{itemize}
     \end{block}
     \begin{onlyenv}<1>
-\begin{lstlisting}[style=TinyConsole]
+\begin{lstlisting}[style=Console]
 usr
 \-- bin
     \-- CCSDaemonExe
 \end{lstlisting}
     \end{onlyenv}
     \begin{onlyenv}<2>
-\begin{lstlisting}[style=TinyConsole]
+\begin{lstlisting}[style=Console]
 usr
 |-- include
 |   \-- boost
 |       \-- chrono
-|           |-- ceil.hpp
 |           \-- chrono.hpp
 \-- lib64
     |-- pkgconfig
@@ -263,14 +262,14 @@ usr
 \end{lstlisting}
     \end{onlyenv}
     \begin{onlyenv}<3>
-\begin{lstlisting}[style=TinyConsole]
+\begin{lstlisting}[style=Console]
 etc
 \-- opkg
     \-- opkg.conf
 \end{lstlisting}
     \end{onlyenv}
     \begin{onlyenv}<4>
-\begin{lstlisting}[style=TinyConsole]
+\begin{lstlisting}[style=Console]
 usr
 \-- share
     \-- bpf
@@ -409,6 +408,24 @@ Source: *****
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]{Package has dependencies}
+    \begin{block}{}
+        Packages usually depend on others.
+    \end{block}
+\begin{lstlisting}[style=Console]
+Package: zeya
+...
+Depends: python (>= 2.7.1-0ubuntu2), vorbis-tools,
+    python-simplejson, python-tagpy
+Recommends: mpg123, flac, faad
+\end{lstlisting}
+    \begin{block}{}
+        This allows package manager to fetch dependencies
+        automatically. It helps to keep system integrity
+        during upgrades or removals.
+    \end{block}
+\end{frame}
+
 \begin{frame}[fragile]{Package has project information}
     \begin{block}{}
         Package metadata alone can point to
@@ -424,6 +441,30 @@ Homepage: http://www.opera.com/browser/
     \begin{block}{}
         This data is easy to keep up to date since
         packages update constantly.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Package can have documentation}
+    \begin{block}{}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{l l}
+            readme & \small\verb|/usr/share/doc/valgrind/README| \\
+            changelog & \small\verb|/usr/share/doc/valgrind/NEWS.Debian.gz| \\
+            authors & \small\verb|/usr/share/doc/valgrind/AUTHORS| \\
+            man pages & \small\verb|/usr/share/man/man1/valgrind.1.gz| \\
+            html docs & \small\verb|/usr/share/doc/valgrind/html/index.html| \\
+        \end{tabular}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Package can be arch-agnostic}
+    \begin{block}{}
+        Packages which contain no machine-specific files,
+        e.g. only data or headers, can have architecture \verb|all|.
+    \end{block}
+    \begin{block}{}
+        Such packages are reused
+        between different architectures of a distro.
     \end{block}
 \end{frame}
 
