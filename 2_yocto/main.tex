@@ -43,8 +43,8 @@
     moredelim=[is][\textbf]{@@@}{@@@}
 }
 
-\title[Yocto: The Practical Guide]{Yocto}
-\subtitle{The Practical Guide}
+\title[Yocto: A New Hope]{Yocto}
+\subtitle{A New Hope}
 \author[M. Jarycki, K. Laskowski]{
     Marek Jarycki \\
     Krzysztof Laskowski
@@ -60,9 +60,9 @@
     \tableofcontents
 \end{frame}
 
-\section{Distro vs ECL}
+\section{Fundamentals}
 
-\begin{frame}{Distro vs ECL}
+\begin{frame}{Fundamentals: distro and ecl}
     \begin{columns}
         \column{.5\textwidth}
             \centering
@@ -73,11 +73,11 @@
     \end{columns}
 \end{frame}
 
-\subsection{Fundamentals}
+\subsection{Distro}
 
 \begin{frame}{Fundamentals}
     \begin{itemize}
-        \item what is das Linux
+        \item what is Linux
         \item what is distro
         \item what is Linux distro
         \item what is version
@@ -87,12 +87,12 @@
     \end{itemize}
 \end{frame}
 
-\subsection{The world of ECL}
+\subsection{ECL}
 
-\begin{frame}{The world of ECL}
+\begin{frame}{The world of ecl}
     \begin{itemize}
-        \item what is ECL
-        \item what is LFS
+        \item what is ecl
+        \item what is lfs
         \item what is relation between distro version and ecl
     \end{itemize}
 \end{frame}
@@ -714,6 +714,27 @@ ECL
         \item{Ecl watcher detects the change.}
         \item{Change gets committed as recipes renames.}
         \item{Yocto CI reacts building and uploading packages.}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Let's peek at buildbot webapi \color{blue}{(example)}}
+    Machines building packages may fail.
+    \vspace{\baselineskip}
+    \begin{enumerate}
+        \item{Packages must be built constantly and quickly.}
+        \item{Problems need to be spotted fast.}
+        \item{Machines need to be powerful or numerous enough.}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Let's peek at file server \color{blue}{(example)}}
+    Package file server is constantly used by developers.
+    \vspace{\baselineskip}
+    \begin{enumerate}
+        \item{Capacious: packages may take a lot of disk space.}
+        \item{Secure: recent packages need to be held intact.}
+        \item{Fast: lots of downloads.}
+        \item{Accessible: users may need access at any time.}
     \end{enumerate}
 \end{frame}
 
