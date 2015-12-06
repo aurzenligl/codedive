@@ -16,6 +16,9 @@
 \usepackage{listings}
 \usepackage{textcomp}
 \usepackage{multicol}
+\usepackage{hyperref}
+
+\newenvironment*{dummyenv}{}{}
 
 \lstdefinestyle{Console}{
     keepspaces=true,
@@ -54,10 +57,6 @@
 
 \begin{frame}
     \titlepage
-\end{frame}
-
-\begin{frame}
-    \tableofcontents
 \end{frame}
 
 \section{Fundamentals}
@@ -736,6 +735,46 @@ ECL
         \item{Fast: lots of downloads.}
         \item{Accessible: users may need access at any time.}
     \end{enumerate}
+\end{frame}
+
+\appendix
+
+\section{\appendixname}
+\subsection{Examples reference}
+
+\begin{frame}
+    \setbeamersize{description width=-\labelsep}
+    \begin{description}
+        \item[Build project] \hfill \\
+            \begin{dummyenv}
+                \color{blue}\scriptsize
+                \url{https://en.wikibooks.org} \\
+                \url{https://en.wikibooks.org} \\
+                \url{https://en.wikibooks.org/wiki/LaTeX/List_Structures} \\
+            \end{dummyenv}
+        \item[CI project] \hfill \\
+            \begin{dummyenv}
+                \color{blue}\scriptsize
+                \url{https://en.wikibooks.org} \\
+                \url{https://en.wikibooks.org} \\
+                \url{https://en.wikibooks.org/wiki/LaTeX/List_Structures} \\
+            \end{dummyenv}
+        \item[Maintainer stuff] \hfill \\
+            \begin{dummyenv}
+                \color{blue}\scriptsize
+                \url{https://en.wikibooks.org} \\
+                \url{https://en.wikibooks.org} \\
+                \url{https://en.wikibooks.org/wiki/LaTeX/List_Structures} \\
+            \end{dummyenv}
+    \end{description}
+\end{frame}
+
+\subsection{Questions}
+
+\begin{frame}
+    \begin{center}
+        \Huge Questions
+    \end{center}
 \end{frame}
 
 \end{document}
