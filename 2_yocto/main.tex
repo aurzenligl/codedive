@@ -8,6 +8,14 @@
     \beamertemplatenavigationsymbolsempty
 }
 
+% Found on internets. Appends page numbers to styles:
+% "Warsaw", "Copenhagen", "Malmoe" and "Luebeck".
+\newcommand*\oldmacro{}
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+   \oldmacro\hfill%
+   \insertframenumber\,/\,\inserttotalframenumber}
+
 \usepackage[english]{babel}
 \usepackage{times}
 \usepackage[utf8]{inputenc}
@@ -740,6 +748,7 @@ ECL
 \appendix
 
 \section{\appendixname}
+
 \subsection{Examples reference}
 
 \begin{frame}
