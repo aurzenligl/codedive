@@ -496,12 +496,23 @@ Homepage: http://www.opera.com/browser/
 \begin{frame}[fragile]{Package can be arch-agnostic}
     \begin{block}{}
         Packages which contain no machine-specific files,
-        e.g. only data or headers, can have architecture \verb|all|.
+        e.g. only scripts, data or headers, can have architecture \verb|all|.
     \end{block}
     \begin{block}{}
         Such packages are reused
         between different architectures of a distro.
     \end{block}
+\begin{lstlisting}[style=Console]
+bpf_42160-r0_all.ipk
+\end{lstlisting}
+\begin{lstlisting}[style=Console]
+.
+`-- CONTENTS
+    `-- usr
+        `-- share
+            `-- bpf
+                `-- bpf.xml
+\end{lstlisting}
 \end{frame}
 
 \subsection{Index}
