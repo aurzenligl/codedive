@@ -186,6 +186,17 @@ sdk
 
 \begin{frame}[fragile, t]{SDK has environment script}
     \begin{block}{}
+        Source it to enter SDK environment. \\
+        \begin{columns}
+            \centering
+            \begin{column}{.9\textwidth}
+\begin{lstlisting}[style=TinyConsole]
+source sdk/environment-setup-core2-64-nokia-linux
+\end{lstlisting}
+            \end{column}
+        \end{columns}
+    \end{block}
+    \begin{block}{}
         Sets path, auxiliary and program specific variables:
         \begin{itemize}
             \scriptsize
@@ -214,7 +225,6 @@ export PATH=/***/sdk/sysroots/i686-nsnsdk-linux/usr/bin: \
 export CC="x86_64-pc-linux-gnu-gcc -m64 --sysroot=$SDKTARGETSYSROOT"
 export CXX="x86_64-pc-linux-gnu-g++ -m64 --sysroot=$SDKTARGETSYSROOT"
 export CPP="x86_64-pc-linux-gnu-gcc -E -m64 --sysroot=$SDKTARGETSYSROOT"
-export AS="x86_64-pc-linux-gnu-as"
 export LD="x86_64-pc-linux-gnu-ld --sysroot=$SDKTARGETSYSROOT"
 \end{lstlisting}
     \end{onlyenv}
@@ -236,25 +246,24 @@ export SYSROOT_DYN_LINKER=$SDKTARGETSYSROOT/lib64/ld-linux-x86-64.so.2
 
 \begin{frame}[fragile]{SDK toolchain has compilers and tools}
 \begin{lstlisting}[style=Console]
-bin
-|-- x86_64-pc-linux-gnu-g++
-|-- x86_64-pc-linux-gnu-gcc
-|-- x86_64-pc-linux-gnu-ld
-|-- x86_64-pc-linux-gnu-nm
-|-- x86_64-pc-linux-gnu-readelf
-|-- x86_64-pc-linux-gnu-size
-|-- x86_64-pc-linux-gnu-strings
-\-- x86_64-pc-linux-gnu-strip
-\end{lstlisting}
-\begin{lstlisting}[style=Console]
-usr
-\-- bin
-    |-- cmake
-    |-- opkg -> opkg-cl
-    |-- opkg-cl
-    |-- pkg-config
-    |-- prophyc
-    \-- protoc
+i686-nsnsdk-linux
+|-- bin
+|   |-- x86_64-pc-linux-gnu-g++
+|   |-- x86_64-pc-linux-gnu-gcc
+|   |-- x86_64-pc-linux-gnu-ld
+|   |-- x86_64-pc-linux-gnu-nm
+|   |-- x86_64-pc-linux-gnu-readelf
+|   |-- x86_64-pc-linux-gnu-size
+|   |-- x86_64-pc-linux-gnu-strings
+|   \-- x86_64-pc-linux-gnu-strip
+\-- usr
+    \-- bin
+        |-- cmake
+        |-- opkg -> opkg-cl
+        |-- opkg-cl
+        |-- pkg-config
+        |-- prophyc
+        \-- protoc
 \end{lstlisting}
 \end{frame}
 
