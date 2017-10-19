@@ -1,0 +1,79 @@
+questions:
+    - how much time for presentation?
+    - pdf or html?
+    - what examples?
+    - what katas?
+    - which ci server?
+    - which hosting?
+
+example structure:
+    presentation
+    testing
+        design
+        cycle
+        pytest
+    automation
+        tox
+        buildbot
+    workflow
+        git
+        delivery
+
+Philosophy
+-----------------------------
+
+1. test driven development
+    enhances design
+        codebases consist of:
+            frameworks
+                applications
+                    libraries
+                        classes
+                            functions
+        writing tests allows to put one in user's shoes
+            small/understandable test suggests API is correct (minimal/complete)
+                code build upon reasonable API-s
+    enhances quality
+        stable APIs: funciton locations, names, arguments, contracts stay the same
+        understandable code: faster reading, better organization
+    enhances velocity
+        no heisenbugs: low probability of code change impacting remote part of codebase
+        detectable bugs: shorter time between bug introduction and finding
+
+Testing
+-----------------------------
+
+1. Test design:
+    given: created tested unit with dependencies (which can be test-doubles)
+    when: execute tested operation
+    then: assert post-conditions, output data, mock state, etc.
+(show example of testcase)
+(test-doubles example: stub, fake, mock)
+
+2. TDD cycle:
+    1. add test for missing functionality -> test fails
+    2. add implementation -> test succeeds
+    3. refactor implementation -> test succeeds
+(show example of TDD cycle)
+
+3. Test framework:
+(show example of pytest)
+
+Automation
+-----------------------------
+
+1. Environment setup
+(example of tox)
+
+2. Continuous integration
+(example of buildbot)
+
+Workflow
+-----------------------------
+
+1. version control
+(example of git, make a new repo, make branches, commit, git log, git show, gitk)
+
+2. branches and deliveries
+(example of branch-out, work, merge master back, review, deliver to master)
+
